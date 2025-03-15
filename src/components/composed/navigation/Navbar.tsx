@@ -227,6 +227,7 @@ export default function Navbar() {
                 <Link
                   key={item}
                   href={`/${item.toLowerCase()}`}
+                  onClick={() => setIsMenuOpen(false)}
                   className="text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                 >
                   {item}
@@ -242,13 +243,17 @@ export default function Navbar() {
                   </div>
                   <Link
                     href="/dashboard"
+                    onClick={() => setIsMenuOpen(false)}
                     className="text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                   >
                     <Settings className="inline-block w-4 h-4 mr-2" />
                     Dashboard
                   </Link>
                   <button
-                    onClick={() => logout()}
+                    onClick={() => {
+                      logout();
+                      setIsMenuOpen(false);
+                    }}
                     className="text-left text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                   >
                     <LogOut className="inline-block w-4 h-4 mr-2" />
@@ -259,6 +264,7 @@ export default function Navbar() {
                 <div className="flex space-x-2 pt-4 border-t border-neutral-200/60 dark:border-neutral-700/60">
                   <Link
                     href={`/login?redirect=${pathname}`}
+                    onClick={() => setIsMenuOpen(false)}
                     className="text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                   >
                     Login
@@ -266,6 +272,7 @@ export default function Navbar() {
                   <span className="text-neutral-400">/</span>
                   <Link
                     href={`/register?redirect=${pathname}`}
+                    onClick={() => setIsMenuOpen(false)}
                     className="text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                   >
                     Register
@@ -274,6 +281,7 @@ export default function Navbar() {
               )}
               <div className="flex items-center space-x-4 pt-4 border-t border-neutral-200/60 dark:border-neutral-700/60">
                 <button
+                  onClick={() => setIsMenuOpen(false)}
                   className="p-2 text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                   aria-label="Search"
                 >
@@ -281,6 +289,7 @@ export default function Navbar() {
                 </button>
                 <Link
                   href="/cart"
+                  onClick={() => setIsMenuOpen(false)}
                   className="p-2 text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                 >
                   <ShoppingCart className="h-5 w-5" />
