@@ -2,11 +2,13 @@ import { ProductsPageComponent } from "@/components/composed/productsPage/Produc
 import { IProduct } from "@/interfaces/IProduct.interface";
 
 export default async function ProductPage({
-  params,
+  searchParams,
 }: {
-  params: Promise<{ page: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
-  const page = Number((await params).page) || 1;
+  const searchParamsObj = await searchParams;
+  const pageNumber = parseInt(searchParamsObj.page || "1", 10);
+
   const limit = 30;
   let products: IProduct[] = [];
   let total = 0;
@@ -14,7 +16,7 @@ export default async function ProductPage({
   try {
     const response = await fetch(
       `https://dummyjson.com/products?limit=${limit}&skip=${
-        (page - 1) * limit
+        (pageNumber - 1) * limit
       }`,
       {
         cache: "no-store",
@@ -37,7 +39,7 @@ export default async function ProductPage({
         </h2>
         <ProductsPageComponent
           initialProducts={products}
-          currentPage={page}
+          currentPage={pageNumber}
           totalPages={totalPages}
         />
       </div>
