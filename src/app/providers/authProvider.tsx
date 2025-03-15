@@ -42,7 +42,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = (userData: User) => {
-    if (!user?.email?.includes("wisdom")) {
+    if (!userData?.email?.includes("wisdom")) {
       throw new Error("Invalid email");
     }
     setUser(userData);
