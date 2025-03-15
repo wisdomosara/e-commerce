@@ -160,7 +160,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-white dark:bg-black text-gray-900 dark:text-white">
+    <main className="bg-neutral-50 dark:bg-black text-neutral-900 dark:text-neutral-100">
       {/* Hero Section */}
       <section className="relative h-[700px] flex items-center">
         <div className="absolute inset-0">
@@ -176,16 +176,16 @@ export default function Home() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-neutral-50 mb-6">
               Discover Amazing Products
             </h1>
-            <p className="text-xl text-gray-200 mb-8">
+            <p className="text-xl text-neutral-200 mb-8">
               Shop the latest trends and innovative products from top brands
               around the world.
             </p>
             <Link
               href="/products"
-              className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-black bg-white rounded-lg shadow-sm hover:bg-gray-50 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800 transition-colors duration-200"
+              className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-neutral-900 bg-neutral-50 rounded-lg shadow-sm hover:bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-700 transition-colors duration-200"
             >
               Shop Now
             </Link>
@@ -194,7 +194,7 @@ export default function Home() {
       </section>
 
       {/* Featured Categories */}
-      <section className="py-40">
+      <section className="py-10 md:py-40">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             Popular Categories
@@ -205,11 +205,11 @@ export default function Home() {
                 <Link
                   key={category}
                   href={`/products?category=${category}`}
-                  className="group relative h-48 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-900"
+                  className="group relative h-48 rounded-lg overflow-hidden bg-neutral-100 dark:bg-neutral-800"
                 >
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white text-xl font-medium">
+                    <span className="text-neutral-50 text-xl font-medium">
                       {category}
                     </span>
                   </div>
@@ -224,9 +224,9 @@ export default function Home() {
       <CollectionSection collections={collections} />
 
       {/* Featured Products */}
-      <section className="py-40 bg-gray-50 dark:bg-gray-950">
+      <section className="py-10 md:py-40 bg-black dark:bg-black">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-3xl font-bold text-center mb-12 text-neutral-50">
             Featured Products
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -236,7 +236,7 @@ export default function Home() {
                 href={`/products/${product.id}`}
                 className="group"
               >
-                <div className="rounded-lg overflow-hidden bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition">
+                <div className="rounded-lg overflow-hidden bg-neutral-900 dark:bg-neutral-900 shadow-sm hover:shadow-md transition">
                   <div className="relative h-64">
                     <Image
                       src={product.image}
@@ -246,14 +246,16 @@ export default function Home() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="font-medium mb-2">{product.title}</h3>
+                    <h3 className="font-medium mb-2 text-neutral-200">
+                      {product.title}
+                    </h3>
                     <div className="flex items-center justify-between">
-                      <span className="text-lg font-bold">
+                      <span className="text-lg font-bold text-neutral-200">
                         ${product.price}
                       </span>
                       <div className="flex items-center">
                         <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                        <span className="ml-1 text-sm text-gray-600 dark:text-gray-400">
+                        <span className="ml-1 text-sm text-neutral-400">
                           {product.rating}
                         </span>
                       </div>
@@ -270,16 +272,16 @@ export default function Home() {
       <NewArrivals newArrivals={newArrivals} />
 
       {/* Call to Action */}
-      <section className="py-32">
+      <section className="py-40">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Start Shopping?</h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-neutral-600 dark:text-neutral-300 mb-8 max-w-2xl mx-auto">
             Join thousands of satisfied customers and discover our amazing
             collection of products.
           </p>
           <Link
             href="/products"
-            className="bg-black text-white dark:bg-white dark:text-black px-8 py-4 rounded-md font-medium hover:bg-gray-900 dark:hover:bg-gray-100 transition"
+            className="bg-neutral-900 text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 px-8 py-4 rounded-md font-medium hover:bg-neutral-800 dark:hover:bg-neutral-200 transition"
           >
             Browse All Products
           </Link>

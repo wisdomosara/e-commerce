@@ -1,34 +1,46 @@
-import { ProductCard } from "@/components/composed/productsPage/ProductCard";
+import { ProductsPageComponent } from "@/components/composed/productsPage/ProductsPage";
 import { IProduct } from "@/interfaces/IProduct.interface";
-import React from "react";
 
-const ProductPage = async () => {
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ page: string }>;
+}) {
+  const page = Number((await params).page) || 1;
+  const limit = 30;
   let products: IProduct[] = [];
+  let total = 0;
 
   try {
-    const response = await fetch("https://dummyjson.com/products", {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `https://dummyjson.com/products?limit=${limit}&skip=${
+        (page - 1) * limit
+      }`,
+      {
+        cache: "no-store",
+      }
+    );
     const data = await response.json();
     products = data.products;
+    total = data.total;
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error("Error fetching initial products:", error);
   }
+
+  const totalPages = Math.ceil(total / limit);
 
   return (
     <section className="w-full mt-[40px] py-12">
       <div className="container mx-auto px-4">
-        <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-gray-100 sm:text-3xl">
+        <h2 className="mb-8 text-2xl font-bold text-stone-900 dark:text-stone-100 sm:text-3xl">
           Featured Products
         </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-          {products.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </div>
+        <ProductsPageComponent
+          initialProducts={products}
+          currentPage={page}
+          totalPages={totalPages}
+        />
       </div>
     </section>
   );
-};
-
-export default ProductPage;
+}
