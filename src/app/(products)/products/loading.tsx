@@ -2,10 +2,10 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <section className="w-full mt-[40px] py-12">
+    <section className="w-full py-12">
       <div className="container mx-auto px-4">
         <h2 className="mb-8 text-2xl font-bold text-neutral-900 dark:text-neutral-100 sm:text-3xl animate-pulse">
-          <div className="h-8 w-48 bg-neutral-200 dark:bg-neutral-700 rounded"></div>
+          <div className="h-12 w-48 bg-neutral-200 dark:bg-neutral-700 rounded"></div>
         </h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {Array.from({ length: 15 }).map((_, index) => (

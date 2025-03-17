@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
-import { Orbitron, Fira_Code } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/composed/theme-provider";
-import { AuthProvider } from "@/app/providers/authProvider";
-import Navbar from "@/components/composed/navigation/Navbar";
-import Footer from "@/components/composed/navigation/Footer";
+import { AuthProvider } from "@/providers/authProvider";
 
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
-  subsets: ["latin"],
-});
-
-const firaCode = Fira_Code({
-  variable: "--font-fira-code",
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
@@ -27,19 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${orbitron.variable} ${firaCode.variable} antialiased`}>
+    <html lang="en">
+      <body className={`${jakarta.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <AuthProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </AuthProvider>
+          <AuthProvider>{children}</AuthProvider>
         </ThemeProvider>
       </body>
     </html>

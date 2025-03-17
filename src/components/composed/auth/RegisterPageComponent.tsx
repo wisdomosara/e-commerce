@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useAuth } from "@/app/providers/authProvider";
+import { useAuth } from "@/providers/authProvider";
 
 export default function RegisterPageComponent() {
   const [name, setName] = useState("");
@@ -26,8 +26,8 @@ export default function RegisterPageComponent() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-neutral-50 dark:bg-neutral-900 px-4">
-      <div className="max-w-md w-full space-y-8 bg-white dark:bg-neutral-800 p-8 rounded-lg shadow-lg">
+    <div className="min-h-full py-[24px] grow flex items-center justify-center bg-neutral-50 dark:bg-black px-4">
+      <div className="max-w-md w-full space-y-8 bg-white dark:bg-neutral-800 px-4 py-8 md:p-8 rounded-lg shadow-lg">
         <div>
           <h2 className="text-center text-3xl font-bold text-neutral-900 dark:text-neutral-100">
             Create an account

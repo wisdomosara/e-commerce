@@ -32,7 +32,7 @@ export default async function ProductPage({
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <section className="w-full mt-[40px] py-12">
+    <section className="w-full py-12">
       <div className="container mx-auto px-4">
         <h2 className="mb-8 text-2xl font-bold text-stone-900 dark:text-stone-100 sm:text-3xl">
           Featured Products

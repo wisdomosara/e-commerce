@@ -2,10 +2,21 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, ShoppingCart, Search, Moon, Sun, User, LogOut, Settings, ChevronDown } from "lucide-react";
+import {
+  Menu,
+  X,
+  ShoppingCart,
+  Search,
+  Moon,
+  Sun,
+  User,
+  LogOut,
+  Settings,
+  ChevronDown,
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
-import { useAuth } from "@/app/providers/authProvider";
+import { useAuth } from "@/providers/authProvider";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,14 +39,14 @@ export default function Navbar() {
 
   const handleClickOutside = (e: MouseEvent) => {
     const target = e.target as HTMLElement;
-    if (!target.closest('.user-dropdown')) {
+    if (!target.closest(".user-dropdown")) {
       setIsDropdownOpen(false);
     }
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   return (
@@ -46,7 +57,7 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 ">
         <div className="flex h-16 items-center">
           {/* Logo and Desktop Navigation */}
           <div className="flex items-center md:space-x-4 shrink-0">
@@ -184,7 +195,13 @@ export default function Navbar() {
                 >
                   Login
                 </Link>
-                <span className={shouldTextBeWhite ? "text-white" : "text-neutral-400"}>/</span>
+                <span
+                  className={
+                    shouldTextBeWhite ? "text-white" : "text-neutral-400"
+                  }
+                >
+                  /
+                </span>
                 <Link
                   href={`/register?redirect=${pathname}`}
                   className={`text-sm ${
@@ -221,7 +238,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 rounded-[12px] px-4 bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-md">
+          <div className="md:hidden py-4 rounded-[12px] mb-[12px] px-4 bg-neutral-50/60 dark:bg-neutral-900/60 backdrop-blur-md">
             <div className="flex flex-col space-y-4">
               {["Home", "Products", "Categories"].map((item) => (
                 <Link
@@ -236,7 +253,9 @@ export default function Navbar() {
               {user ? (
                 <div className="flex flex-col space-y-2 pt-4 border-t border-neutral-200/60 dark:border-neutral-700/60">
                   <div className="flex items-center space-x-2">
-                    <span className="text-neutral-700 dark:text-neutral-200">{user.name}</span>
+                    <span className="text-neutral-700 dark:text-neutral-200">
+                      {user.name}
+                    </span>
                     <div className="w-8 h-8 rounded-full bg-neutral-200 dark:bg-neutral-700 flex items-center justify-center">
                       <User className="h-4 w-4 text-neutral-700 dark:text-neutral-200" />
                     </div>

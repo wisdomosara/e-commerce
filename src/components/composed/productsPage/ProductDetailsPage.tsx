@@ -80,7 +80,7 @@ export default function ProductDetailsPage({
   }, []);
 
   return (
-    <main className="container mt-[40px] mx-auto px-4 py-12">
+    <main className="container mx-auto px-4 py-12">
       {/* Breadcrumb */}
       <nav className="mb-8">
         <ol className="flex items-center space-x-2 text-sm">
